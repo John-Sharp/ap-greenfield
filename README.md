@@ -38,7 +38,7 @@ See readme in backend for more details
 
 ### Models
 
-# TODO add details of building models here
+**TODO** add details of building models here
 
 ### Utils
 
