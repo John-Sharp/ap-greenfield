@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  rest_api:
+    profiles: ["mock-backend"]
+    image: python:3.12-slim
+    working_dir: /app
+    volumes:
+      - ./backend_services/rest_api:/app
+      - python_venv:/venv
+    command: >
+      sh -c "
+      python -m venv /venv &&
+      . /venv/bin/activate &&
+      pip install --no-cache-dir -r requirements.txt &&
+      python main.py
+      "
+
+  db:
+    profiles: ["mock-backend", "real-backend"]
+    image: alpine
+    command: echo "This is the database (well it isn't really)"
+
+volumes:
+  python_venv:
